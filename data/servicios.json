@@ -1,0 +1,24 @@
+{
+"servicios": [
+    {
+    "id": 1,
+    "nombre": "Corte Clásico",
+    "categoria": "Cortes",
+    "precio": 6000,
+    "duracion": 30,
+    "estado": "disponible",
+    "barbero": "Carlos Méndez",
+    "imagen": "img/corte-clasico.jpg"
+    },
+    {
+    "id": 2,
+    "nombre": "Afeitado con Navaja",
+    "categoria": "Afeitado",
+    "precio": 5000,
+    "duracion": 25,
+    "estado": "disponible",
+    "barbero": "Diego Rojas",
+    "imagen": "img/afeitado-navaja.jpg"
+    }
+    ]
+}
