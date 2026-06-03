@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
+
+:root
+{
+--color-fondo: #16161A;
+--color-superficie: #23232B;
+--color-borde: #2E2E38;
+--color-acentoDorado: #C9A24B;
+--color-textoPrincipal: #ededed;
+--color-textoSuave: #A0A0A8;
+--fuente-titulos: 'Oswald', sans-serif;
+--fuente-cuerpo: 'Inter', sans-serif;
+--radio: 10px
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--color-fondo);
+    color:white;
+}
+
+.navbar__logo{
+    color: var(--color-acentoDorado);
+    font-family: var(--fuente-titulos);
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-borde);
+}
+
+.navbar__menu{
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    
+}
+
+.navbar__link{
+    color : var(--color-textoSuave);
+    text-decoration: none;
+}
+
+.hero{
+    padding: 1rem;
+    min-height: 80vh;
+}
+
+.hero h1{
+    font-family: var(--fuente-titulos);
+    font-size: 3rem;
+    color: var(--color-textoPrincipal);
+    margin-bottom: 1rem;
+}
+
+.hero p{
+    color:var(--color-textoSuave);
+    font-family: var(--fuente-cuerpo);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn--primario{
+    background-color: var(--color-acentoDorado);
+    color: var(--color-fondo);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radio);
+    text-decoration: none;
+    font-weight: 600;
+}
