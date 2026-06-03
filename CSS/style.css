@@ -112,5 +112,13 @@ body{
     padding: 0.4rem, 0;
 }
 
+footer{
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    padding: 0.4rem, 0;
+    text-align: center;
+    color: var(--color-textoSuave);
+}
+
 
 
