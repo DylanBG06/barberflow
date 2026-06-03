@@ -77,3 +77,40 @@ body{
     text-decoration: none;
     font-weight: 600;
 }
+
+.problem-solution{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 1rem
+}
+
+.problem-solution h2{
+    grid-column: 1/-1;
+    font-family: var(--fuente-titulos);
+    text-align: center;
+}
+
+.problem-card, .solution-card{
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    padding: 0.75rem;
+}
+
+.problem-card h3, .solution-card h3{
+    font-family: var(--fuente-titulos);
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+.problem-card ul, .solution-card ul{
+    list-style: none;
+}
+
+.problem-card li, .solution-card li{
+    color: var(--color-textoSuave);
+    padding: 0.4rem, 0;
+}
+
+
+
