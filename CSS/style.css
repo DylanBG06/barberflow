@@ -144,6 +144,12 @@ footer{
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
 }
+.busqueda-section{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 
 .busqueda-section input{
     width: 100%;
