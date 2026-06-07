@@ -50,6 +50,12 @@ body{
     text-decoration: none;
 }
 
+.navbar__link--activo{
+    color: #C9A24B;
+    text-decoration:underline;
+    
+}
+
 .hero{
     padding: 1rem;
     min-height: 80vh;

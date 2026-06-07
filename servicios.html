@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+        content="Esta pagina mostrara los distintos servicios que tendra la barberia como cortes de barba o corte normal, etc">
+        <link rel="stylesheet" href="CSS/style.css">
+        <title>Servicios | BarberFlow</title>
+    </head>
+
+    <body>
+        <header class="header">
+            <a href="index.html" class="navbar__logo">BarberFlow</a>
+            <nav class="navbar">
+                <ul class="navbar__menu">
+                    <li><a href="index.html" class="navbar__link">Inicio</a></li>
+                    <li><a href="citas.html" class="navbar__link">Citas</a></li>
+                    <li><a href="servicios.html" class="navbar__link navbar__link--activo">Servicios</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        <main>
+            <section class="page-header">
+
+                <h1>Nuestros servicios</h1>
+                <p>Aqui podras ver los diferentes tipos de servicios que tenemos disponibles en nuestra barberia
+                    Si tienes dudas puedes consultarnos a nuestro WhatsApp
+                </p>
+
+            </section>
+
+            <section class="busqueda-section">
+                <div>
+                    <input type="search" id="campo-busqueda" placeholder="Buscar servicio...">
+                </div>
+                <div class="filtros">
+                    <button class="filtro-btn" data-categoria="todos">Todos</button>
+                    <button class="filtro-btn" data-categoria="cortes">Cortes</button>
+                    <button class="filtro-btn" data-categoria="afeitado">Afeitado</button>
+                    <button class="filtro-btn" data-categoria="cuidadoFacial">Cuidado Facial</button>
+                    <button class="filtro-btn" data-categoria="barbaBigote">Barba y Bigote</button>
+                    <button class="filtro-btn" data-categoria="premium">Corte Premium</button>
+                </div>
+            </section>
+
+            <div class="estadisticas">
+                <div class="estadistica">
+                    <span id="stat-total">0</span>
+                    <p>Servicios</p>
+                </div>
+                <div class="estadistica">
+                    <span id="stat-favoritos">0</span>
+                    <p>Favoritos</p>
+                </div>
+                <div class="estadistica">
+                    <span id="stat-promedio">0</span>
+                    <p>Precio Prom.</p>
+                </div>
+            </div>
+
+            <div id="sin-resultados">
+                <p>No se encontraron servicios.</p>
+            </div>
+
+            <div class="servicios-grid" id="servicios-grid">
+
+            </div>
+        </main>
+
+        <footer>
+            <p>El proyecto desarrollado en la UTN llamado "BarberFlow" por Dylan Bolaños Gonzalez y Brandon Pitterson Martinez para una solucion
+                para agendar citas en las barberias ya que hoy en dia los muchos barberos siguen utilizando el WhatsApp y esto complica todo y con 
+                este sistema esto dejara de ser un problema
+            </p>
+        </footer>
+    </body>
+</html>

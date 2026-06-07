@@ -3,7 +3,7 @@
     {
     "id": 1,
     "nombre": "Corte Clásico",
-    "categoria": "Cortes",
+    "categoria": "cortes",
     "precio": 6000,
     "duracion": 30,
     "estado": "disponible",
@@ -13,12 +13,42 @@
     {
     "id": 2,
     "nombre": "Afeitado con Navaja",
-    "categoria": "Afeitado",
+    "categoria": "afeitado",
     "precio": 5000,
     "duracion": 25,
     "estado": "disponible",
     "barbero": "Diego Rojas",
     "imagen": "img/afeitado-navaja.jpg"
+    },
+    {
+    "id": 3,
+    "nombre": "Cuidado Facial",
+    "categoria": "cuidadoFacial",
+    "precio": 10000,
+    "duracion": 30,
+    "estado": "no disponible",
+    "barbero": "Carlos Paniagua",
+    "imagen": "img/cuidado-facial.jpg"
+    },
+    {
+    "id": 4,
+    "nombre": "Barba y bigote",
+    "categoria": "barbaBigote",
+    "precio": 16000,
+    "duracion": 20,
+    "estado": "no disponible",
+    "barbero": "Luis Artavia",
+    "imagen": "img/barbabigote.jpg"   
+    },
+    {
+    "id": 5,
+    "nombre": "Corte premium",
+    "categoria": "premium",
+    "precio": 24000,
+    "duracion": 40,
+    "estado": "disponible",
+    "barbero": "Eduard Loria",
+    "imagen": "img/premium.jpg"   
     }
     ]
 }
