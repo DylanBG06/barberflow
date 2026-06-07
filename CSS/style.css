@@ -36,6 +36,7 @@ body{
     justify-content: space-between;
     padding: 1rem;
     border-bottom: 1px solid var(--color-borde);
+    align-items: center;
 }
 
 .navbar__menu{
@@ -48,6 +49,7 @@ body{
 .navbar__link{
     color : var(--color-textoSuave);
     text-decoration: none;
+    font-size: 1rem;
 }
 
 .navbar__link--activo{
@@ -57,8 +59,27 @@ body{
 }
 
 .hero{
-    padding: 1rem;
-    min-height: 80vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 5rem 2rem;
+    min-height: 60vh;
+}
+
+.hero--imagen{
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: var(--radio);
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    overflow: hidden;
+}
+
+.hero--texto{
+    padding-left: 2rem;
 }
 
 .hero h1{
@@ -88,7 +109,8 @@ body{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    padding: 1rem
+    padding: 3rem 2rem;
+    margin-top: 1rem;
 }
 
 .problem-solution h2{
@@ -220,4 +242,40 @@ footer{
     grid-template-columns: repeat(auto-fill, minimax(280px, 1fr));
     gap: 1rem;
     padding: 1rem 0;
+}
+
+@media (max-width: 768px) {
+    .problem-solution{
+        grid-template-columns: 1fr;
+    }
+    .estadisticas{
+        grid-template-columns: 1fr;
+    }
+
+    .filtros{
+        flex-wrap: wrap;
+    }
+
+    .hero h1{
+        font-size: 2rem;
+    }
+
+    .page-header h1{
+        font-size: 2rem;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .navbar__menu {
+        gap: 1rem;
+    }
+
+    .hero {
+        min-height: auto;
+        padding: 2rem 1rem;
+    }
 }
