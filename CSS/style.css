@@ -126,5 +126,92 @@ footer{
     color: var(--color-textoSuave);
 }
 
+.page-header{
+    border-bottom: 1px solid var(--color-borde);
+    padding: 1rem;
+}
 
+.page-header h1{
+    font-family: var(--fuente-titulos);
+    font-size: 3rem;
+    color: var(--color-textoPrincipal);
+    margin-bottom: 1rem;
+}
 
+.page-header p{
+    color:var(--color-textoSuave);
+    font-family: var(--fuente-cuerpo);
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.busqueda-section input{
+    width: 100%;
+    background: var(--color-superficie);
+    border: 0.75px solid var(--color-borde);
+    border-radius: var(--radio);
+    color: var(--color-textoPrincipal);
+    padding: 0.5rem;
+}
+
+.busqueda-section input:focus{
+    outline: none;
+    border-color: var(--color-acentoDorado);
+}
+
+.filtros{
+    display: flex;
+    gap: 1rem;
+}
+
+.filtro-btn{
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: 20px;
+    color: var(--color-textoSuave);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+.filtro-btn:hover {
+    border-color: var(--color-acentoDorado);
+    color: var(--color-textoPrincipal);
+}
+
+#sin-resultados{
+    display: none;
+}
+
+.estadisticas{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: 15px;
+}
+
+.estadistica{
+    text-align: center;
+}
+
+.estadistica span{
+    font-size: 2rem;
+    color: var(--color-acentoDorado);
+    font-family: var(--fuente-titulos);
+    display: block;
+}
+
+.estadistica p{
+    color: var(--color-textoSuave);
+    font-size: 0.85rem;
+}
+
+.servicios-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minimax(280px, 1fr));
+    gap: 1rem;
+    padding: 1rem 0;
+}
