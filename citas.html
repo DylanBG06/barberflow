@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Página para agendar citas en BarberFlow seleccionando servicio, barbero, fecha y hora.">
+
+    <link rel="stylesheet" href="CSS/style.css">
+
+    <title>Citas | BarberFlow</title>
+</head>
+
+<body>
+
+    <header class="header">
+
+        <a href="index.html" class="navbar__logo">BarberFlow</a>
+
+        <nav class="navbar">
+
+            <ul class="navbar__menu">
+                <li><a href="index.html" class="navbar__link">Inicio</a></li>
+                <li><a href="servicios.html" class="navbar__link">Servicios</a></li>
+                <li><a href="citas.html" class="navbar__link navbar__link--activo">Citas</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="page-header">
+
+            <h1>Reservar Cita</h1>
+            <p>
+                Completá tus datos, seleccioná el servicio, el barbero, la fecha y la hora para registrar tu cita.
+            </p>
+        </section>
+
+        <section class="citas-layout">
+
+            <form class="form-cita" id="form-cita">
+
+                <h2>Datos de la cita</h2>
+
+                <div class="form-grupo">
+                    <label for="nombre">Nombre Completo</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Ejemplo: Juan Pérez">
+                    <small class="mensaje-error" id="error-nombre"></small>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="telefono">Teléfono</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Ejemplo: 99999999">
+                    <small class="mensaje-error" id="error-telefono"></small>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="correo">Correo electrónico</label>
+                    <input type="email" id="correo" name="correo" placeholder="Ejemplo: cliente@correo.com">
+                    <small class="mensaje-error" id="error-correo"></small>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="servicio">Servicio</label>
+                    <select id="servicio" name="servicio">
+                        <option value="">Seleccione un servicio</option>
+                    </select>
+                    <small class="mensaje-error" id="error-servicio"></small>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="barbero">Barbero</label>
+                    <select id="barbero" name="barbero">
+                        <option value="">Seleccione un barbero</option>
+                        <option value="Carlos">Carlos</option>
+                        <option value="Andrés">Andrés</option>
+                        <option value="Luis">Luis</option>
+                    </select>
+                    <small class="mensaje-error" id="error-barbero"></small>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="fecha">Fecha de la cita</label>
+                    <input type="date" id="fecha" name="fecha">
+                    <small class="mensaje-error" id="error-fecha"></small>
+                </div>
+
+                <div class="form-grupo">
+                    <label for="hora">Hora disponible</label>
+                    <select id="hora" name="hora">
+                        <option value="">Seleccione una hora</option>
+                    </select>
+                    <small class="mensaje-error" id="error-hora"></small>
+                </div>
+
+                <div class="acciones-form">
+                    <button type="submit" class="btn btn--primario">
+                        Confirmar cita
+                    </button>
+
+                    <button type="reset" class="btn btn--secundario" id="btn-limpiar">
+                        Limpiar formulario
+                    </button>
+                </div>
+
+                <p class="mensaje-formulario" id="mensaje-formulario"></p>
+            </form>
+
+            <aside class="resumen-cita">
+
+                <h2>Resumen de reserva</h2>
+
+                <div class="resumen-item">
+                    <span>Servicio:</span>
+                    <strong id="resumen-servicio">No seleccionado</strong>
+                </div>
+
+                <div class="resumen-item">
+                    <span>Barbero:</span>
+                    <strong id="resumen-barbero">No seleccionado</strong>
+                </div>
+
+                <div class="resumen-item">
+                    <span>Fecha:</span>
+                    <strong id="resumen-fecha">No seleccionada</strong>
+                </div>
+
+                <div class="resumen-item">
+                    <span>Hora:</span>
+                    <strong id="resumen-hora">No seleccionada</strong>
+                </div>
+
+                <div class="resumen-item">
+                    <span>Duración:</span>
+                    <strong id="resumen-duracion">0 minutos</strong>
+                </div>
+
+                <div class="resumen-total">
+                    <span>Total estimado:</span>
+                    <strong id="resumen-total">₡0</strong>
+                </div>
+
+                <p class="nota-pago">
+                    El pago se realiza presencialmente en la barbería.
+                </p>
+
+            </aside>
+        </section>
+
+        <section class="citas-registradas">
+
+            <h2>Citas registradas</h2>
+
+            <p class="texto-ayuda">
+                Aquí aparecerán las citas reservadas.
+            </p>
+
+            <div id="lista-citas" class="lista-citas">
+                <p class="estado-vacio">No hay citas registradas.</p>
+            </div>
+
+        </section>
+
+
+        <footer>
+            <p>BarberFlow | Proyecto UTN | Dylan Bolaños González y Brandon Pitterson Martínez</p>
+        </footer>
+
+    </main>
+
+
+
+
+
+
+
+</body>
+
+
+
+
+
+
+
+
+
+
+</html>
