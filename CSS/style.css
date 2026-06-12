@@ -164,6 +164,48 @@ body {
     object-fit: cover;
 }
 
+.problem-card {
+    background-color: rgba(226, 75, 74, 0.05);
+    border-color: rgba(226, 75, 74, 0.4);
+    border-radius: var(--radio);
+    padding: 1.5rem;
+}
+
+.problem-card h3 {
+    color: #E24B4A;
+    font-family: var(--fuente-titulos);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.problem-card li::before {
+    content: "✘  ";
+    color: #E24B4A;
+}
+
+.solution-card {
+    background-color: rgba(76, 175, 125, 0.05);
+    border-color: rgba(76, 175, 125, 0.4);
+    border-radius: var(--radio);
+    padding: 1.5rem;
+}
+
+.solution-card h3 {
+    color: #4CAF7D;
+    font-family: var(--fuente-titulos);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.solution-card li::before {
+    content: "✔  ";
+    color: #4CAF7D;
+}
+
+.solution-card ul, .problem-card ul{
+    list-style: none;
+}
+
 .problem-solution {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -172,39 +214,31 @@ body {
     margin-top: 1rem;
 }
 
-.problem-solution h2 {
+.problem-solution h2{
     grid-column: 1 / -1;
     font-family: var(--fuente-titulos);
     text-align: center;
     font-size: 2rem;
 }
 
-.problem-card,
-.solution-card {
-    background-color: var(--color-superficie);
-    border: 1px solid var(--color-borde);
-    border-radius: var(--radio);
-    padding: 1.5rem;
+.servicios-destacados{
+    padding: 3rem 2rem;
 }
 
-.problem-card h3,
-.solution-card h3 {
+.servicios-destacados h2{
     font-family: var(--fuente-titulos);
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    color: var(--color-textoPrincipal);
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--color-acentoDorado);
+    display: inline-block;
 }
 
-.problem-card ul,
-.solution-card ul {
-    list-style: none;
+.btn-ver-mas{
+    text-align: center;
+    margin-top: 2rem;
 }
-
-.problem-card li,
-.solution-card li {
-    color: var(--color-textoSuave);
-    padding: 0.4rem 0;
-}
-
 /* ============================= */
 /* Encabezado interno de páginas */
 /* ============================= */
