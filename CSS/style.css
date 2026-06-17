@@ -79,7 +79,7 @@ body {
     display: inline-block;
     background-color: var(--color-acentoDorado);
     color: var(--color-fondo);
-    padding: 0.75rem 1.5rem;
+    padding: 1rem 2rem;
     border-radius: var(--radio);
     text-decoration: none;
     font-weight: 600;
@@ -212,6 +212,7 @@ body {
     gap: 2rem;
     padding: 3rem 2rem;
     margin-top: 1rem;
+    background-color: var(--color-superficie);
 }
 
 .problem-solution h2{

@@ -16,7 +16,6 @@ document.addEventListener('DOMContentLoaded', function(){
             tarjeta.innerHTML = `
                 <div class="servicio-card__image">
                     <img src="${servicio.imagen}" alt="${servicio.nombre}">
-
                 </div>
                 <div class="servicio-card__body">
                     <h3 class="servicio-card__nombre">${servicio.nombre}</h3>
