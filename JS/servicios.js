@@ -7,6 +7,7 @@ async function inicializar() {
     const datos = await respuesta.json();
     todoslosServicios = datos.servicios;
     renderizarServicios(todoslosServicios);
+    configurarBusqueda();
     
 }
 
@@ -39,8 +40,40 @@ function renderizarServicios(lista){
                 </div>
             `;
             grid.appendChild(tarjeta);
-    });
+        });
+        actualizarEstaditicas(lista);
 } 
+
+function actualizarEstaditicas(lista){
+    const total = lista.length;
+
+    const suma = lista.reduce(function(acumulador, servicio){
+        return acumulador + servicio.precio;
+    } , 0);
+
+    const serviciosTotales = document.getElementById("stat-total");
+    const favoritos = document.getElementById("stat-favoritos");
+    const promedio = document.getElementById("stat-promedio")
+    
+    const promedioCalculado = suma / total;
+    promedio.textContent = '₡' + Math.round(promedioCalculado).toLocaleString('es-CR');
+    serviciosTotales.textContent = total;
+    favoritos.textContent = 0;
+
+}
+
+function configurarBusqueda(){
+    const inputBusqueda = document.getElementById("campo-busqueda")
+
+    inputBusqueda.addEventListener('input', function(){
+        busquedaActual = this.value.toLowerCase().trim();
+
+        const resultado = todoslosServicios.filter(function(servicio){
+            return servicio.nombre.toLowerCase().includes(busquedaActual);
+        })
+        renderizarServicios(resultado)
+    })
+}
 
 
 
