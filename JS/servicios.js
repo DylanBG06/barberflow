@@ -10,6 +10,7 @@ async function inicializar() {
     configurarBusqueda();
     configurarFiltros();
     cargarProductos(datos.productos);
+    configurarBotonFavoritos()
 }
 
 const grid = document.getElementById("servicios-grid");
@@ -146,6 +147,20 @@ function configurarFiltros(){
 
         })
     });
+}
+
+function configurarBotonFavoritos(){
+    const boton = document.getElementById('btn-favoritos');
+
+    boton.addEventListener('click', function (){
+        const favoritos = cargarFavoritos();
+
+        const resultado = todoslosServicios.filter(function(servicio) {
+            return favoritos.includes(servicio.id);
+        });
+
+        renderizarServicios(resultado);
+    })
 }
 
 function cargarProductos(lista){
