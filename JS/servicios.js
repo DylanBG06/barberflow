@@ -8,7 +8,8 @@ async function inicializar() {
     todoslosServicios = datos.servicios;
     renderizarServicios(todoslosServicios);
     configurarBusqueda();
-    
+    configurarFiltros();
+    cargarProductos(datos.productos);
 }
 
 const grid = document.getElementById("servicios-grid");
@@ -73,6 +74,55 @@ function configurarBusqueda(){
         })
         renderizarServicios(resultado)
     })
+}
+
+function configurarFiltros(){
+    const botones = document.querySelectorAll('.filtro-btn');
+
+    botones.forEach(function(boton) {
+        boton.addEventListener('click', function (){
+            botones.forEach(function(b) {
+                b.classList.remove('filtro-btn--activo');
+            });
+
+            this.classList.add('filtro-btn--activo');
+
+            filtroActivo = this.dataset.categoria;
+
+            if (filtroActivo === 'todos') {
+                renderizarServicios(todoslosServicios);
+            } else {
+                const resultado = todoslosServicios.filter(function(servicio) {
+                    return servicio.categoria === filtroActivo;
+            });
+                renderizarServicios(resultado);
+            }
+
+        })
+    });
+}
+
+function cargarProductos(lista){
+    const gridProductos = document.getElementById("productos-grid");
+
+    lista.forEach(function(producto) {
+        const tarjeta = document.createElement('div');
+        tarjeta.className = 'producto-card';
+
+        tarjeta.innerHTML = `
+    <div class="producto-card__imagen">
+        <img src="${producto.imagen}" alt="${producto.nombre}">
+    </div>
+    <div class="producto-card__body">
+        <h3>${producto.nombre}</h3>
+        <p>${producto.descripcion}</p>
+        <span class="producto-card__precio">
+            ₡${producto.precio.toLocaleString('es-CR')}
+        </span>
+    </div>
+    `;
+    gridProductos.appendChild(tarjeta);
+    });
 }
 
 

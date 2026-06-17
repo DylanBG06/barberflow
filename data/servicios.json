@@ -50,5 +50,54 @@
     "barbero": "Eduard Loria",
     "imagen": "img/premium.jpg"   
     }
-    ]
+    ], "productos": [
+    {
+        "id": 1,
+        "nombre": "Pomada Mate",
+        "categoria": "styling",
+        "precio": 8500,
+        "descripcion": "Fijación fuerte con acabado mate.",
+        "imagen": "img/pomada-mate.jpg"
+    },
+    {
+        "id": 2,
+        "nombre": "Cera Flexible",
+        "categoria": "styling",
+        "precio": 7900,
+        "descripcion": "Control natural y acabado de brillo bajo.",
+        "imagen": "img/cera-flexible.jpg"
+    },
+    {
+        "id": 3,
+        "nombre": "Aceite para Barba Premium",
+        "categoria": "cuidado",
+        "precio": 9500,
+        "descripcion": "Hidrata, suaviza y aporta un aroma fresco.",
+        "imagen": "img/aceite-barba.jpg"
+    },
+    {
+        "id": 4,
+        "nombre": "Shampoo Revitalizante",
+        "categoria": "cuidado",
+        "precio": 7200,
+        "descripcion": "Limpieza profunda para cabello y cuero cabelludo.",
+        "imagen": "img/shampoo-revitalizante.jpg"
+    },
+    {
+        "id": 5,
+        "nombre": "Peine de Carbono Profesional",
+        "categoria": "herramientas",
+        "precio": 4500,
+        "descripcion": "Ideal para cortes de precisión y peinados diarios.",
+        "imagen": "img/peine-carbono.jpg"
+    },
+    {
+        "id": 6,
+        "nombre": "Cepillo para Barba",
+        "categoria": "herramientas",
+        "precio": 6800,
+        "descripcion": "Cerdas firmes que ayudan a desenredar y dar forma.",
+        "imagen": "img/cepillo-barba.jpg"
+    }
+]
 }
