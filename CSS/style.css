@@ -431,6 +431,32 @@ body {
     padding: 1rem;
 }
 
+.favorito-btn {
+    background-color: var(--color-superficie);
+    border: 1px solid var(--color-borde);
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: right;
+}
+
+.favorito-btn:hover {
+    border-color: #E24B4A;
+    transform: scale(1.1);
+}
+
+.favorito-activo {
+    background-color: rgba(226, 75, 74, 0.15);
+    border-color: #E24B4A;
+    color: #E24B4A;
+}
+
 .catalogo-productos {
     padding: 3rem 2rem;
     border-top: 1px solid var(--color-borde);

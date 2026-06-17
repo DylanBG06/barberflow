@@ -27,6 +27,7 @@ function renderizarServicios(lista){
                 </div>
                 <div class="servicio-card__body">
                     <h3 class="servicio-card__nombre">${servicio.nombre}</h3>
+                    <button class="favorito-btn" data-id="${servicio.id}">♡</button>
                     <p class="servicio-card__meta">
                         👤 ${servicio.barbero} · ⏱ ${servicio.duracion} min
                     </p>
@@ -41,9 +42,54 @@ function renderizarServicios(lista){
                 </div>
             `;
             grid.appendChild(tarjeta);
+            
+            const btnFav = tarjeta.querySelector('.favorito-btn');
+            const favoritos = cargarFavoritos();
+
+            if(favoritos.includes(servicio.id)){
+                btnFav.textContent = '♥'
+                btnFav.classList.add('favorito-activo');
+            }
+
+            btnFav.addEventListener('click', function(){
+                toggleFavorito(servicio.id);
+
+                const favoritosActualizados = cargarFavoritos();
+
+                if(favoritosActualizados.includes(servicio.id)){
+                    this.textContent = '♥';
+                    this.classList.add('favorito-activo');
+                }else{
+                    this.textContent = '♡'
+                    this.classList.remove('favorito-activo');
+                }
+
+                actualizarEstaditicas(lista);
+
+            })
+
         });
         actualizarEstaditicas(lista);
 } 
+
+function cargarFavoritos(){
+    return JSON.parse(localStorage.getItem('favoritos') || '[]');
+}
+
+function toggleFavorito(id){
+    const favoritos = cargarFavoritos();
+    const indice = favoritos.indexOf(id)
+
+    if(indice === -1){
+        favoritos.push(id);
+    }
+    else{
+        favoritos.splice(indice, 1);
+    }
+
+    localStorage.setItem('favoritos', JSON.stringify(favoritos));
+
+}
 
 function actualizarEstaditicas(lista){
     const total = lista.length;
@@ -59,7 +105,7 @@ function actualizarEstaditicas(lista){
     const promedioCalculado = suma / total;
     promedio.textContent = '₡' + Math.round(promedioCalculado).toLocaleString('es-CR');
     serviciosTotales.textContent = total;
-    favoritos.textContent = 0;
+    favoritos.textContent = cargarFavoritos().length;
 
 }
 
