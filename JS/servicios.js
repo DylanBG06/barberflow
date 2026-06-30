@@ -1,11 +1,15 @@
 let todoslosServicios = [];
+let todosLosBarberos = [];
 let filtroActivo = 'todos';
 let busquedaActual = '';
 
 async function inicializar() {
     const respuesta = await fetch('data/servicios.json')
     const datos = await respuesta.json();
+
     todoslosServicios = datos.servicios;
+    todosLosBarberos = datos.barberos;
+
     renderizarServicios(todoslosServicios);
     configurarBusqueda();
     configurarFiltros();
@@ -15,13 +19,14 @@ async function inicializar() {
 
 const grid = document.getElementById("servicios-grid");
 
-function renderizarServicios(lista){
+function renderizarServicios(lista) {
     grid.innerHTML = '';
 
-    lista.forEach(function(servicio) {
+    lista.forEach(function (servicio) {
         const tarjeta = document.createElement('div');
         tarjeta.className = 'servicio-card';
-        
+        const nombreBarbero = buscarBarberoPorId(servicio.barberoSugeridoId);
+
         tarjeta.innerHTML = `
                 <div class="servicio-card__image">
                     <img src="${servicio.imagen}" alt="${servicio.nombre}">
@@ -30,7 +35,7 @@ function renderizarServicios(lista){
                     <h3 class="servicio-card__nombre">${servicio.nombre}</h3>
                     <button class="favorito-btn" data-id="${servicio.id}">♡</button>
                     <p class="servicio-card__meta">
-                        👤 ${servicio.barbero} · ⏱ ${servicio.duracion} min
+                        👤 ${nombreBarbero} · ⏱ ${servicio.duracion} min
                     </p>
                     <div class="servicio-card__footer">
                         <span class="servicio-card__precio">
@@ -40,51 +45,61 @@ function renderizarServicios(lista){
                             ${servicio.estado}
                         </span>
                     </div>
+                    <button class="agregar-cita-btn" data-id="${servicio.id}">
+                        Agregar a mi cita
+                    </button>
                 </div>
             `;
-            grid.appendChild(tarjeta);
-            
-            const btnFav = tarjeta.querySelector('.favorito-btn');
-            const favoritos = cargarFavoritos();
+        grid.appendChild(tarjeta);
 
-            if(favoritos.includes(servicio.id)){
-                btnFav.textContent = '♥'
-                btnFav.classList.add('favorito-activo');
+        const btnFav = tarjeta.querySelector('.favorito-btn');
+        const favoritos = cargarFavoritos();
+
+        const btnAgregar = tarjeta.querySelector('.agregar-cita-btn');
+
+        btnAgregar.addEventListener('click', function () {
+
+            agregarServicioACita(servicio.id);
+        });
+
+        if (favoritos.includes(servicio.id)) {
+            btnFav.textContent = '♥'
+            btnFav.classList.add('favorito-activo');
+        }
+
+        btnFav.addEventListener('click', function () {
+            toggleFavorito(servicio.id);
+
+            const favoritosActualizados = cargarFavoritos();
+
+            if (favoritosActualizados.includes(servicio.id)) {
+                this.textContent = '♥';
+                this.classList.add('favorito-activo');
+            } else {
+                this.textContent = '♡'
+                this.classList.remove('favorito-activo');
             }
 
-            btnFav.addEventListener('click', function(){
-                toggleFavorito(servicio.id);
+            actualizarEstaditicas(lista);
 
-                const favoritosActualizados = cargarFavoritos();
+        })
 
-                if(favoritosActualizados.includes(servicio.id)){
-                    this.textContent = '♥';
-                    this.classList.add('favorito-activo');
-                }else{
-                    this.textContent = '♡'
-                    this.classList.remove('favorito-activo');
-                }
+    });
+    actualizarEstaditicas(lista);
+}
 
-                actualizarEstaditicas(lista);
-
-            })
-
-        });
-        actualizarEstaditicas(lista);
-} 
-
-function cargarFavoritos(){
+function cargarFavoritos() {
     return JSON.parse(localStorage.getItem('favoritos') || '[]');
 }
 
-function toggleFavorito(id){
+function toggleFavorito(id) {
     const favoritos = cargarFavoritos();
     const indice = favoritos.indexOf(id)
 
-    if(indice === -1){
+    if (indice === -1) {
         favoritos.push(id);
     }
-    else{
+    else {
         favoritos.splice(indice, 1);
     }
 
@@ -92,17 +107,17 @@ function toggleFavorito(id){
 
 }
 
-function actualizarEstaditicas(lista){
+function actualizarEstaditicas(lista) {
     const total = lista.length;
 
-    const suma = lista.reduce(function(acumulador, servicio){
+    const suma = lista.reduce(function (acumulador, servicio) {
         return acumulador + servicio.precio;
-    } , 0);
+    }, 0);
 
     const serviciosTotales = document.getElementById("stat-total");
     const favoritos = document.getElementById("stat-favoritos");
     const promedio = document.getElementById("stat-promedio")
-    
+
     const promedioCalculado = suma / total;
     promedio.textContent = '₡' + Math.round(promedioCalculado).toLocaleString('es-CR');
     serviciosTotales.textContent = total;
@@ -110,25 +125,25 @@ function actualizarEstaditicas(lista){
 
 }
 
-function configurarBusqueda(){
+function configurarBusqueda() {
     const inputBusqueda = document.getElementById("campo-busqueda")
 
-    inputBusqueda.addEventListener('input', function(){
+    inputBusqueda.addEventListener('input', function () {
         busquedaActual = this.value.toLowerCase().trim();
 
-        const resultado = todoslosServicios.filter(function(servicio){
+        const resultado = todoslosServicios.filter(function (servicio) {
             return servicio.nombre.toLowerCase().includes(busquedaActual);
         })
         renderizarServicios(resultado)
     })
 }
 
-function configurarFiltros(){
+function configurarFiltros() {
     const botones = document.querySelectorAll('.filtro-btn');
 
-    botones.forEach(function(boton) {
-        boton.addEventListener('click', function (){
-            botones.forEach(function(b) {
+    botones.forEach(function (boton) {
+        boton.addEventListener('click', function () {
+            botones.forEach(function (b) {
                 b.classList.remove('filtro-btn--activo');
             });
 
@@ -139,9 +154,9 @@ function configurarFiltros(){
             if (filtroActivo === 'todos') {
                 renderizarServicios(todoslosServicios);
             } else {
-                const resultado = todoslosServicios.filter(function(servicio) {
+                const resultado = todoslosServicios.filter(function (servicio) {
                     return servicio.categoria === filtroActivo;
-            });
+                });
                 renderizarServicios(resultado);
             }
 
@@ -149,13 +164,13 @@ function configurarFiltros(){
     });
 }
 
-function configurarBotonFavoritos(){
+function configurarBotonFavoritos() {
     const boton = document.getElementById('btn-favoritos');
 
-    boton.addEventListener('click', function (){
+    boton.addEventListener('click', function () {
         const favoritos = cargarFavoritos();
 
-        const resultado = todoslosServicios.filter(function(servicio) {
+        const resultado = todoslosServicios.filter(function (servicio) {
             return favoritos.includes(servicio.id);
         });
 
@@ -163,10 +178,10 @@ function configurarBotonFavoritos(){
     })
 }
 
-function cargarProductos(lista){
+function cargarProductos(lista) {
     const gridProductos = document.getElementById("productos-grid");
 
-    lista.forEach(function(producto) {
+    lista.forEach(function (producto) {
         const tarjeta = document.createElement('div');
         tarjeta.className = 'producto-card';
 
@@ -182,10 +197,48 @@ function cargarProductos(lista){
         </span>
     </div>
     `;
-    gridProductos.appendChild(tarjeta);
+        gridProductos.appendChild(tarjeta);
     });
 }
 
+//Funcion para buscar el nombre del barbero sugerido por el id
+
+function buscarBarberoPorId(IdBarbero) {
+    let nombreBarbero = "Sin barbero asignado";
+
+    todosLosBarberos.forEach(function (barbero) {
+        if (barbero.id === IdBarbero) {
+            nombreBarbero = barbero.nombre;
+        }
+    });
+
+    return nombreBarbero;
+}
+
+//funcion para agregar servicios con el buton "Agregar a cita".
+
+function agregarServicioACita(idServicio) {
+    let serviciosSeleccionados = JSON.parse(localStorage.getItem('serviciosSeleccionados') || '[]');
+
+    if (!serviciosSeleccionados.includes(idServicio)) {
+        serviciosSeleccionados.push(idServicio);
+        localStorage.setItem('serviciosSeleccionados', JSON.stringify(serviciosSeleccionados));
+
+        Swal.fire({
+            icon: "success",
+            title: "Servicio agregado",
+            text: "El servicio fue agregado a tu cita.",
+            confirmButtonText: "Aceptar"
+        });
+    } else {
+        Swal.fire({
+            icon: "warning",
+            title: "Servicio ya agregado",
+            text: "Este servicio ya está en tu cita.",
+            confirmButtonText: "Aceptar"
+        });
+    }
+}
 
 
 inicializar();

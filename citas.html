@@ -40,9 +40,9 @@
 
         <section class="citas-layout">
 
-            <form class="form-cita" id="form-cita">
+            <form class="form-cita" id="form-cita" novalidate>
 
-                <h2>Datos de la cita</h2>
+                <h2>Datos personales</h2>
 
                 <div class="form-grupo">
                     <label for="nombre">Nombre Completo</label>
@@ -52,7 +52,7 @@
 
                 <div class="form-grupo">
                     <label for="telefono">Teléfono</label>
-                    <input type="tel" id="telefono" name="telefono" placeholder="Ejemplo: 99999999">
+                    <input type="tel" id="telefono" name="telefono" placeholder="Ejemplo: 12345678">
                     <small class="mensaje-error" id="error-telefono"></small>
                 </div>
 
@@ -62,21 +62,37 @@
                     <small class="mensaje-error" id="error-correo"></small>
                 </div>
 
+                <h2 class="form-seccion-titulo">Servicios de la cita</h2>
+
                 <div class="form-grupo">
-                    <label for="servicio">Servicio</label>
-                    <select id="servicio" name="servicio">
-                        <option value="">Seleccione un servicio</option>
-                    </select>
+                    <label for="select-servicio">Servicio disponible</label>
+
+                    <div class="servicio-selector">
+                        <select id="select-servicio" name="select-servicio">
+                            <option value="">Seleccione un servicio</option>
+                        </select>
+
+                        <button type="button" class="btn btn--secundario" id="btn-agregar-servicio">
+                            Agregar
+                        </button>
+                    </div>
+
                     <small class="mensaje-error" id="error-servicio"></small>
                 </div>
+
+                <div class="servicios-agregados">
+                    <h3>Servicios agregados</h3>
+                    <div id="servicios-cita" class="servicios-cita">
+                        <!-- JavaScript mostrará aquí los servicios agregados -->
+                    </div>
+                </div>
+
+                <h2 class="form-seccion-titulo">Fecha y horario</h2>
 
                 <div class="form-grupo">
                     <label for="barbero">Barbero</label>
                     <select id="barbero" name="barbero">
                         <option value="">Seleccione un barbero</option>
-                        <option value="Carlos">Carlos</option>
-                        <option value="Andrés">Andrés</option>
-                        <option value="Luis">Luis</option>
                     </select>
                     <small class="mensaje-error" id="error-barbero"></small>
                 </div>
@@ -106,6 +122,7 @@
                 </div>
 
                 <p class="mensaje-formulario" id="mensaje-formulario"></p>
+
             </form>
 
             <aside class="resumen-cita">
@@ -114,7 +131,9 @@
 
                 <div class="resumen-item">
                     <span>Servicio:</span>
-                    <strong id="resumen-servicio">No seleccionado</strong>
+                    <div id="resumen-servicio" class="resumen-servicios-lista">
+                        <p>No seleccionado</p>
+                    </div>
                 </div>
 
                 <div class="resumen-item">
@@ -132,10 +151,6 @@
                     <strong id="resumen-hora">No seleccionada</strong>
                 </div>
 
-                <div class="resumen-item">
-                    <span>Duración:</span>
-                    <strong id="resumen-duracion">0 minutos</strong>
-                </div>
 
                 <div class="resumen-total">
                     <span>Total estimado:</span>
@@ -154,7 +169,7 @@
             <h2>Citas registradas</h2>
 
             <p class="texto-ayuda">
-                Aquí aparecerán las citas reservadas.
+                Aquí se pueden observar las citas reservadas.
             </p>
 
             <div id="lista-citas" class="lista-citas">
@@ -163,23 +178,36 @@
 
         </section>
 
-        </main>
+    </main>
 
-        <footer>
-            <address>
-                BarberFlow <br>
-                Correo: contacto@barberflow.com<br>
-                Costa Rica
-            </address>
-            <ul>
-                <li><a href="index.html">Volver a Inicio</a></li>
-                <li><a href="servicios.html">Servicios</a></li>
-                <li><a class="active-link" href="citas.html">Citas</a></li>
-            </ul>
+    <footer class="footer">
+    <div class="footer__contenido">
 
-            <p>
-                <small>&copy; 2026 BarberFlow. Todos los derechos reservados.</small>
-            </p>
-        </footer>
-    </body>
+        <div class="footer__marca">
+            <h3>✂ BarberFlow</h3>
+            <p>Reservas de barbería simples, rápidas y organizadas.</p>
+        </div>
+
+        <address class="footer__contacto">
+            <span>Correo: contacto@barberflow.com</span>
+            <span>Costa Rica</span>
+        </address>
+
+        <nav class="footer__nav">
+            <a href="index.html" class="footer__link">Inicio</a>
+            <a href="servicios.html" class="footer__link">Servicios</a>
+            <a href="citas.html" class="footer__link footer__link--activo">Citas</a>
+        </nav>
+
+    </div>
+
+    <p class="footer__copy">
+        &copy; 2026 BarberFlow. Todos los derechos reservados.
+    </p>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="JS/citas.js"></script>
+</body>
+
 </html>

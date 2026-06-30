@@ -78,22 +78,33 @@
 
         </main>
 
-        <footer>
-            <address>
-                BarberFlow <br>
-                Correo: contacto@barberflow.com<br>
-                Costa Rica
-            </address>
-            <ul>
-                <li><a href="index.html">Volver a Inicio</a></li>
-                <li><a class="active-link" href="servicios.html">Servicios</a></li>
-                <li><a href="citas.html">Citas</a></li>
-            </ul>
+        <footer class="footer">
+    <div class="footer__contenido">
 
-            <p>
-                <small>&copy; 2026 BarberFlow. Todos los derechos reservados.</small>
-            </p>
-        </footer>
+        <div class="footer__marca">
+            <h3>✂ BarberFlow</h3>
+            <p>Reservas de barbería simples, rápidas y organizadas.</p>
+        </div>
+
+        <address class="footer__contacto">
+            <span>Correo: contacto@barberflow.com</span>
+            <span>Costa Rica</span>
+        </address>
+
+        <nav class="footer__nav">
+            <a href="index.html" class="footer__link">Inicio</a>
+            <a href="servicios.html" class="footer__link">Servicios</a>
+            <a href="citas.html" class="footer__link footer__link--activo">Citas</a>
+        </nav>
+
+    </div>
+
+    <p class="footer__copy">
+        &copy; 2026 BarberFlow. Todos los derechos reservados.
+    </p>
+</footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="JS/servicios.js"></script>
     </body>
 </html>
