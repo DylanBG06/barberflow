@@ -44,16 +44,18 @@
 
                 <h2>Datos personales</h2>
 
-                <div class="form-grupo">
-                    <label for="nombre">Nombre Completo</label>
-                    <input type="text" id="nombre" name="nombre" placeholder="Ejemplo: Juan Pérez">
-                    <small class="mensaje-error" id="error-nombre"></small>
-                </div>
+                <div class="campos-dobles">
+                    <div class="form-grupo">
+                        <label for="nombre">Nombre Completo</label>
+                        <input type="text" id="nombre" name="nombre" placeholder="Ejemplo: Juan Pérez">
+                        <small class="mensaje-error" id="error-nombre"></small>
+                    </div>
 
-                <div class="form-grupo">
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" id="telefono" name="telefono" placeholder="Ejemplo: 12345678">
-                    <small class="mensaje-error" id="error-telefono"></small>
+                    <div class="form-grupo">
+                        <label for="telefono">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" placeholder="Ejemplo: 12345678">
+                        <small class="mensaje-error" id="error-telefono"></small>
+                    </div>
                 </div>
 
                 <div class="form-grupo">
@@ -89,18 +91,20 @@
 
                 <h2 class="form-seccion-titulo">Fecha y horario</h2>
 
-                <div class="form-grupo">
-                    <label for="barbero">Barbero</label>
-                    <select id="barbero" name="barbero">
-                        <option value="">Seleccione un barbero</option>
-                    </select>
-                    <small class="mensaje-error" id="error-barbero"></small>
-                </div>
+                <div class="campos-dobles">
+                    <div class="form-grupo">
+                        <label for="barbero">Barbero</label>
+                        <select id="barbero" name="barbero">
+                            <option value="">Seleccione un barbero</option>
+                        </select>
+                        <small class="mensaje-error" id="error-barbero"></small>
+                    </div>
 
-                <div class="form-grupo">
-                    <label for="fecha">Fecha de la cita</label>
-                    <input type="date" id="fecha" name="fecha">
-                    <small class="mensaje-error" id="error-fecha"></small>
+                    <div class="form-grupo">
+                        <label for="fecha">Fecha de la cita</label>
+                        <input type="date" id="fecha" name="fecha">
+                        <small class="mensaje-error" id="error-fecha"></small>
+                    </div>
                 </div>
 
                 <div class="form-grupo">
@@ -181,33 +185,33 @@
     </main>
 
     <footer class="footer">
-    <div class="footer__contenido">
+        <div class="footer__contenido">
 
-        <div class="footer__marca">
-            <h3>✂ BarberFlow</h3>
-            <p>Reservas de barbería simples, rápidas y organizadas.</p>
+            <div class="footer__marca">
+                <h3>✂ BarberFlow</h3>
+                <p>Reservas de barbería simples, rápidas y organizadas.</p>
+            </div>
+
+            <address class="footer__contacto">
+                <span>Correo: contacto@barberflow.com</span>
+                <span>Costa Rica</span>
+            </address>
+
+            <nav class="footer__nav">
+                <a href="index.html" class="footer__link">Inicio</a>
+                <a href="servicios.html" class="footer__link">Servicios</a>
+                <a href="citas.html" class="footer__link footer__link--activo">Citas</a>
+            </nav>
+
         </div>
 
-        <address class="footer__contacto">
-            <span>Correo: contacto@barberflow.com</span>
-            <span>Costa Rica</span>
-        </address>
-
-        <nav class="footer__nav">
-            <a href="index.html" class="footer__link">Inicio</a>
-            <a href="servicios.html" class="footer__link">Servicios</a>
-            <a href="citas.html" class="footer__link footer__link--activo">Citas</a>
-        </nav>
-
-    </div>
-
-    <p class="footer__copy">
-        &copy; 2026 BarberFlow. Todos los derechos reservados.
-    </p>
-</footer>
+        <p class="footer__copy">
+            &copy; 2026 BarberFlow. Todos los derechos reservados.
+        </p>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="JS/citas.js"></script>
 </body>
 
-</html>
+</html>>

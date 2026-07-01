@@ -335,14 +335,7 @@ function calcularTotalServicios() {
     return total;
 }
 
-
-
-
-
-
 // Funciones para barberos, validar disponibilidad y horas
-
-
 
 function cargarBarberos() {
     selectBarbero.innerHTML = '<option value="">Seleccione un barbero</option>';
@@ -358,7 +351,6 @@ function cargarBarberos() {
         }
     });
 }
-
 
 function cargarHoras() {
     selectHora.innerHTML = '<option value="">Seleccione una hora</option>';
@@ -387,9 +379,6 @@ function cargarHoras() {
     });
 }
 
-
-
-
 function obtenerHorasOcupadas(barberoId, fecha) {
     const citas = cargarCitasGuardadas();
     const horasOcupadas = [];
@@ -402,10 +391,6 @@ function obtenerHorasOcupadas(barberoId, fecha) {
 
     return horasOcupadas;
 }
-
-
-
-
 
 function existeCitaMismaHora() {
     const citas = cargarCitasGuardadas();
@@ -429,9 +414,6 @@ function existeCitaMismaHora() {
     return existe;
 }
 
-
-
-
 function validarDisponibilidadCita() {
     if (existeCitaMismaHora()) {
         mostrarError(selectHora, errorHora, "Ese barbero ya tiene una cita registrada en esa fecha y hora.");
@@ -442,19 +424,7 @@ function validarDisponibilidadCita() {
     return true;
 }
 
-
-
-
-
-
-
-
-
 // Funciones para manejar las citas registradas y crear las tarjetas de citas
-
-
-
-
 
 function crearObjetoCita() {
     const cita = {
@@ -472,8 +442,6 @@ function crearObjetoCita() {
 
     return cita;
 }
-
-
 
 function mostrarCitasRegistradas() {
     const citas = cargarCitasGuardadas();
@@ -498,7 +466,7 @@ function mostrarCitasRegistradas() {
         nombresServicios = nombresServicios.slice(0, -2);
 
         tarjeta.innerHTML = `
-   <div class="cita-card__encabezado">
+    <div class="cita-card__encabezado">
     <div>
         <h3>${cita.nombre}</h3>
         <p>${cita.fecha} · ${cita.hora}</p>
@@ -519,11 +487,11 @@ function mostrarCitasRegistradas() {
         <p><strong>Barbero:</strong> ${obtenerNombreBarbero(cita.barberoId)}</p>
         <p><strong>Fecha:</strong> ${cita.fecha}</p>
         <p><strong>Hora:</strong> ${cita.hora}</p>
-        <p><strong>Total:</strong> ₡${cita.total.toLocaleString("es-CR")}</p>
-       <div class="cita-estado-control">
+        <p class="detalle-total"><strong>Total:</strong> ₡${cita.total.toLocaleString("es-CR")}</p>
+        <div class="cita-estado-control">
     <label>Estado:</label>
 
-   <select class="select-estado-cita">
+    <select class="select-estado-cita">
     <option value="pendiente" ${cita.estado === "pendiente" ? "selected" : ""}>Pendiente</option>
     <option value="terminado" ${cita.estado === "terminado" ? "selected" : ""}>Terminado</option>
     <option value="cancelada" ${cita.estado === "cancelada" ? "selected" : ""}>Cancelada</option>

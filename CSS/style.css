@@ -319,8 +319,9 @@ body {
 /* Encabezado interno de páginas */
 /* ============================= */
 .page-header {
-    border-bottom: 1px solid var(--color-borde);
-    padding: 2rem;
+    background-color: var(--color-superficie);
+    padding: 3rem 2rem;                          
+    margin-bottom: 1rem;                         
 }
 
 .page-header h1 {
@@ -609,6 +610,12 @@ body {
     border-color: #4CAF7D;
 }
 
+.form-cita .campos-dobles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
 .mensaje-error {
     color: #ff6b6b;
     font-size: 0.85rem;
@@ -620,6 +627,11 @@ body {
     gap: 1rem;
     flex-wrap: wrap;
     margin-top: 1rem;
+}
+
+.acciones-form .btn--primario {
+    padding: 0.9rem 2.5rem;
+    font-size: 1rem;
 }
 
 .mensaje-formulario {
@@ -665,6 +677,9 @@ body {
 
 .citas-registradas {
     margin: 2rem;
+    padding: 1.5rem;
+    border-radius: var(--radio);    /* agregar */
+    border: 1px solid var(--color-borde);  /* agregar */
 }
 
 .texto-ayuda {
@@ -736,7 +751,7 @@ body {
 .footer {
     background-color: var(--color-superficie);
     border-top: 1px solid var(--color-borde);
-     padding: 1.5rem 2rem;
+    padding: 1.5rem 2rem;
     color: var(--color-textoSuave);
 }
 
@@ -964,27 +979,41 @@ body {
 
 .cita-card__detalle {
     display: none;
-    margin-top: 0.55rem;
-    padding-top: 0.55rem;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
     border-top: 1px solid var(--color-borde);
-    gap: 0.25rem;
 }
 
 .cita-card--abierta .cita-card__detalle {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1.5rem;
 }
-
 
 .cita-card__detalle p {
     color: var(--color-textoSuave);
     font-size: 0.88rem;
-    line-height: 1.25;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--color-borde);
     margin: 0;
 }
 
 .cita-card__detalle strong {
     color: var(--color-textoPrincipal);
+}
+
+.detalle-total {
+    grid-column: 1 / -1;
+    font-size: 1rem !important;
+    color: var(--color-acentoDorado) !important;
+    border-bottom: none !important;
+    padding-top: 0.5rem !important;
+}
+
+/* El botón y el select de estado ocupan toda la fila */
+.cita-estado-control,
+.btn-eliminar-cita {
+    grid-column: 1 / -1;
 }
 
 .btn-eliminar-cita {
@@ -1061,11 +1090,6 @@ body {
     background-color: rgba(226, 75, 74, 0.15);
     color: #E24B4A;
 }
-
-
-
-
-
 
 /* ============================= */
 /* Responsive */
@@ -1181,8 +1205,5 @@ body {
 .footer__nav {
     justify-content: center;
 }
-
-
-
 }
 
