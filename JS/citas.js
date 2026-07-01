@@ -47,8 +47,6 @@ const resumenTotal = document.getElementById("resumen-total");
 
 const listaCitas = document.getElementById("lista-citas");
 
-
-
 // Funcion para cargar el JSON
 
 async function cargarDatosJSON() {
@@ -108,19 +106,11 @@ function obtenerNombreBarbero(idBarbero) {
     return nombreBarbero;
 }
 
-
-
-
-
-
 // FUNCIONES DE LOCALSTORAGE
-
 
 function cargarCitasGuardadas() {
     return JSON.parse(localStorage.getItem("citas") || "[]");
 }
-
-
 
 function guardarServiciosSeleccionados() {
     const idsServicios = [];
@@ -132,8 +122,6 @@ function guardarServiciosSeleccionados() {
     localStorage.setItem("serviciosSeleccionados", JSON.stringify(idsServicios));
 }
 
-
-
 function cargarServiciosSeleccionados() {
     const idsServicios = JSON.parse(localStorage.getItem("serviciosSeleccionados") || "[]");
 
@@ -142,7 +130,6 @@ function cargarServiciosSeleccionados() {
     });
 }
 
-
 function guardarCita(cita) {
     const citas = JSON.parse(localStorage.getItem("citas") || "[]");
 
@@ -150,8 +137,6 @@ function guardarCita(cita) {
 
     localStorage.setItem("citas", JSON.stringify(citas));
 }
-
-
 
 function eliminarCita(idCita) {
     let citas = cargarCitasGuardadas();
@@ -166,8 +151,6 @@ function eliminarCita(idCita) {
     cargarHoras();
 }
 
-
-
 function actualizarEstadoCita(idCita, nuevoEstado) {
     const citas = cargarCitasGuardadas();
 
@@ -181,10 +164,6 @@ function actualizarEstadoCita(idCita, nuevoEstado) {
 
     mostrarCitasRegistradas();
 }
-
-
-
-
 
 // Funciones para agregar, quitar y mostrar servicios en la cita
 
@@ -206,7 +185,6 @@ function cargarServiciosEnSelect() {
         }
     });
 }
-
 
 //Funcion para agregar servicio a la cita desde el formulario
 
@@ -236,22 +214,16 @@ function agregarServicioDesdeFormulario() {
     cargarServiciosEnSelect();
 }
 
-
-
-
 function quitarServicioDeCita(idServicio) {
     serviciosSeleccionados = serviciosSeleccionados.filter(function (servicio) {
         return servicio.id !== idServicio;
     });
 
     guardarServiciosSeleccionados();
-
     renderizarServiciosAgregados();
     mostrarServiciosSeleccionados();
     cargarServiciosEnSelect();
 }
-
-
 
 function renderizarServiciosAgregados() {
     contenedorServiciosCita.innerHTML = "";
@@ -286,7 +258,6 @@ function renderizarServiciosAgregados() {
     });
 }
 
-
 function mostrarServiciosSeleccionados() {
     if (serviciosSeleccionados.length === 0) {
         resumenServicio.innerHTML = "<p>No seleccionado</p>";
@@ -312,8 +283,6 @@ function mostrarServiciosSeleccionados() {
     resumenTotal.textContent = "₡" + total.toLocaleString("es-CR");
 }
 
-
-
 function obtenerIdsServiciosSeleccionados() {
     const idsServicios = [];
 
@@ -323,7 +292,6 @@ function obtenerIdsServiciosSeleccionados() {
 
     return idsServicios;
 }
-
 
 function calcularTotalServicios() {
     let total = 0;
@@ -535,13 +503,7 @@ function mostrarCitasRegistradas() {
     });
 }
 
-
-
-
-
 // Funcion para el resumen de la cita
-
-
 
 function actualizarResumenCita() {
     if (selectBarbero.value === "") {
@@ -563,13 +525,6 @@ function actualizarResumenCita() {
     }
 }
 
-
-
-
-
-
-
-
 //Funciones para mostrar error o exito y limpiar errores
 
 function mostrarError(input, elementoError, mensaje) {
@@ -578,7 +533,6 @@ function mostrarError(input, elementoError, mensaje) {
 
     input.classList.remove("input-success");
     input.classList.add("input-error");
-
 
 }
 
@@ -589,9 +543,7 @@ function mostrarExito(input, elementoError) {
     input.classList.remove("input-error");
     input.classList.add("input-success");
 
-
 }
-
 
 //Funcion para limpiar los mensajes de error
 function limpiarErrores() {
@@ -615,10 +567,6 @@ function limpiarClasesValidacion() {
     inputFecha.classList.remove("input-error", "input-success");
     selectHora.classList.remove("input-error", "input-success");
 }
-
-
-
-
 
 //Funciones para validar campos del formulario
 
@@ -735,7 +683,6 @@ function validarFecha() {
     mostrarExito(inputFecha, errorFecha);
     return true;
 
-
 }
 
 // Validar hora
@@ -772,10 +719,6 @@ function validarFormularioCita() {
         horaValida;
 }
 
-
-
-
-
 //Funcion para limpiar TODO el formulario
 
 function limpiarFormularioCompleto() {
@@ -799,11 +742,7 @@ function limpiarFormularioCompleto() {
     cargarHoras();
 }
 
-
-
-
 //Funciones para usar sweetAlert
-
 
 // Mensajes con SweetAlert
 
@@ -834,12 +773,7 @@ function mostrarAlertaError(titulo, mensaje) {
     });
 }
 
-
-
-
 //EVENTOS DEL FORMULARIO
-
-
 //=========================
 
 formCita.addEventListener("submit", function (event) {
@@ -867,9 +801,6 @@ formCita.addEventListener("submit", function (event) {
 
     mostrarAlertaExito("Cita registrada", "La cita fue guardada correctamente.");
 });
-
-
-
 
 //EventsListener de cada campo del formulario, para que valide mientras se escribe.
 
@@ -906,14 +837,7 @@ selectHora.addEventListener("change", function () {
     actualizarResumenCita();
 });
 
-
-
-
-
-
-
 //INICIALIZACION DE LA PÁGINA
-
 
 document.addEventListener("DOMContentLoaded", async function () {
     await cargarDatosJSON();
