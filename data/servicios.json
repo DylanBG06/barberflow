@@ -94,7 +94,7 @@
             "categoria": "cuidadoFacial",
             "precio": 4500,
             "duracion": 20,
-            "estado": "disponible",
+            "estado": "no disponible",
             "descripcion": "Lavado del cabello con productos adecuados para limpieza y frescura.",
             "imagen": "img/lavado-capilar.jpg",
             "barberoSugeridoId": 5
