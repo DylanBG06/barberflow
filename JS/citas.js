@@ -480,11 +480,20 @@ function mostrarCitasRegistradas() {
         btnEliminar.addEventListener("click", function (event) {
             event.stopPropagation();
 
-            const confirmar = confirm("¿Desea eliminar esta cita?");
+            Swal.fire({
+                icon: "warning",
+                title: "¿Eliminar cita?",
+                text: "Esta acción no se puede deshacer.",
+                showCancelButton: true,
+                confirmButtonText: "Sí, eliminar",
+                cancelButtonText: "Cancelar"
+            }).then(function (resultado) {
+                if (resultado.isConfirmed) {
+                    eliminarCita(cita.id);
 
-            if (confirmar) {
-                eliminarCita(cita.id);
-            }
+                    mostrarAlertaExito("Cita eliminada", "La cita fue eliminada correctamente.");
+                }
+            });
         });
 
         const selectEstado = tarjeta.querySelector(".select-estado-cita");
