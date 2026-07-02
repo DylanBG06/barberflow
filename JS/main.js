@@ -4,13 +4,18 @@ document.addEventListener('DOMContentLoaded', function () {
     let barberos = [];
 
     async function cargarServicios() {
+    try {
         const respuesta = await fetch('data/servicios.json');
         const datos = await respuesta.json();
 
         barberos = datos.barberos;
 
-        const serviciosDestacados = datos.servicios.slice(0, 6);
-        
+        const serviciosDestacados = datos.servicios
+            .filter(function (servicio) {
+                return servicio.estado === "disponible";
+            })
+            .slice(0, 6);
+
         serviciosDestacados.forEach(function (servicio) {
             const tarjeta = document.createElement('div');
             tarjeta.className = 'servicio-card';
@@ -43,8 +48,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
             contenedor.appendChild(tarjeta);
         });
-    }
 
+    } catch (error) {
+        console.error("Error al cargar los servicios destacados", error);
+    }
+}
     function buscarBarberoPorId(idBarbero) {
         let nombreBarbero = "Sin barbero asignado";
 
