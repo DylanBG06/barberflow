@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         barberos = datos.barberos;
 
-        const serviciosDestacados = datos.servicios.slice(0, 5);
+        const serviciosDestacados = datos.servicios.slice(0, 6);
         
         serviciosDestacados.forEach(function (servicio) {
             const tarjeta = document.createElement('div');
