@@ -22,6 +22,16 @@ const grid = document.getElementById("servicios-grid");
 function renderizarServicios(lista) {
     grid.innerHTML = '';
 
+    const sinResultados = document.getElementById("sin-resultados");
+
+    if (lista.length === 0) {
+        sinResultados.style.display = "block";
+        actualizarEstaditicas(lista);
+        return;
+    } else {
+        sinResultados.style.display = "none";
+    }
+
     lista.forEach(function (servicio) {
         const tarjeta = document.createElement('div');
         tarjeta.className = 'servicio-card';
@@ -45,8 +55,12 @@ function renderizarServicios(lista) {
                             ${servicio.estado}
                         </span>
                     </div>
-                    <button class="agregar-cita-btn" data-id="${servicio.id}">
-                        Agregar a mi cita
+                    <button 
+                        class="agregar-cita-btn" 
+                        data-id="${servicio.id}"
+                        ${servicio.estado !== "disponible" ? "disabled" : ""}
+                    >
+                    ${servicio.estado === "disponible" ? "Agregar a mi cita" : "No disponible"}
                     </button>
                 </div>
             `;
@@ -116,30 +130,31 @@ function actualizarEstaditicas(lista) {
 
     const serviciosTotales = document.getElementById("stat-total");
     const favoritos = document.getElementById("stat-favoritos");
-    const promedio = document.getElementById("stat-promedio")
+    const promedio = document.getElementById("stat-promedio");
 
-    const promedioCalculado = suma / total;
-    promedio.textContent = '₡' + Math.round(promedioCalculado).toLocaleString('es-CR');
     serviciosTotales.textContent = total;
     favoritos.textContent = cargarFavoritos().length;
 
+    if (total === 0) {
+        promedio.textContent = "₡0";
+    } else {
+        const promedioCalculado = suma / total;
+        promedio.textContent = '₡' + Math.round(promedioCalculado).toLocaleString('es-CR');
+    }
 }
 
 function configurarBusqueda() {
-    const inputBusqueda = document.getElementById("campo-busqueda")
+    const inputBusqueda = document.getElementById("campo-busqueda");
 
     inputBusqueda.addEventListener('input', function () {
         busquedaActual = this.value.toLowerCase().trim();
 
-        const resultado = todoslosServicios.filter(function (servicio) {
-            return servicio.nombre.toLowerCase().includes(busquedaActual);
-        })
-        renderizarServicios(resultado)
-    })
+        aplicarBusquedaYFiltro();
+    });
 }
 
 function configurarFiltros() {
-    const botones = document.querySelectorAll('.filtro-btn');
+    const botones = document.querySelectorAll('.filtro-btn[data-categoria]');
 
     botones.forEach(function (boton) {
         boton.addEventListener('click', function () {
@@ -151,17 +166,28 @@ function configurarFiltros() {
 
             filtroActivo = this.dataset.categoria;
 
-            if (filtroActivo === 'todos') {
-                renderizarServicios(todoslosServicios);
-            } else {
-                const resultado = todoslosServicios.filter(function (servicio) {
-                    return servicio.categoria === filtroActivo;
-                });
-                renderizarServicios(resultado);
-            }
-
-        })
+            aplicarBusquedaYFiltro();
+        });
     });
+}
+
+function aplicarBusquedaYFiltro() {
+    let resultado = todoslosServicios;
+
+    if (filtroActivo !== 'todos') {
+        resultado = resultado.filter(function (servicio) {
+            return servicio.categoria === filtroActivo;
+        });
+    }
+
+    if (busquedaActual !== '') {
+        resultado = resultado.filter(function (servicio) {
+            return servicio.nombre.toLowerCase().includes(busquedaActual) ||
+                servicio.descripcion.toLowerCase().includes(busquedaActual);
+        });
+    }
+
+    renderizarServicios(resultado);
 }
 
 function configurarBotonFavoritos() {
@@ -218,6 +244,36 @@ function buscarBarberoPorId(IdBarbero) {
 //funcion para agregar servicios con el buton "Agregar a cita".
 
 function agregarServicioACita(idServicio) {
+    let servicioSeleccionado = null;
+
+    todoslosServicios.forEach(function (servicio) {
+        if (servicio.id === idServicio) {
+            servicioSeleccionado = servicio;
+        }
+    });
+
+    if (servicioSeleccionado === null) {
+        Swal.fire({
+            icon: "error",
+            title: "Servicio no encontrado",
+            text: "No se pudo encontrar el servicio seleccionado.",
+            confirmButtonText: "Aceptar"
+        });
+
+        return;
+    }
+
+    if (servicioSeleccionado.estado !== "disponible") {
+        Swal.fire({
+            icon: "warning",
+            title: "Servicio no disponible",
+            text: "Este servicio no se puede agregar a la cita porque no está disponible.",
+            confirmButtonText: "Aceptar"
+        });
+
+        return;
+    }
+
     let serviciosSeleccionados = JSON.parse(localStorage.getItem('serviciosSeleccionados') || '[]');
 
     if (!serviciosSeleccionados.includes(idServicio)) {

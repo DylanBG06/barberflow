@@ -825,8 +825,9 @@ btnLimpiar.addEventListener("click", function (event) {
     event.preventDefault();
 
     limpiarFormularioCompleto();
-});
 
+    mostrarAlertaExito("Formulario limpiado", "Los datos del formulario fueron limpiados correctamente.");
+});
 selectBarbero.addEventListener("change", function () {
     validarBarbero();
     selectHora.value = "";

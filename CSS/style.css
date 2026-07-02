@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600&display=swap');
 
 /* ============================= */
-/* Variables generales */
+/* VARIABLES GENERALES */
 /* ============================= */
+
 :root {
     --color-fondo: #16161A;
     --color-superficie: #23232B;
@@ -10,14 +11,17 @@
     --color-acentoDorado: #C9A24B;
     --color-textoPrincipal: #ededed;
     --color-textoSuave: #A0A0A8;
+
     --fuente-titulos: 'Oswald', sans-serif;
     --fuente-cuerpo: 'Inter', sans-serif;
+
     --radio: 10px;
 }
 
 /* ============================= */
-/* Reset básico */
+/* RESET BÁSICO */
 /* ============================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -30,9 +34,15 @@ body {
     font-family: var(--fuente-cuerpo);
 }
 
+img {
+    max-width: 100%;
+    display: block;
+}
+
 /* ============================= */
-/* Header y navegación */
+/* HEADER Y NAVEGACIÓN */
 /* ============================= */
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -73,18 +83,20 @@ body {
 }
 
 /* ============================= */
-/* Botones */
+/* BOTONES GENERALES */
 /* ============================= */
+
 .btn--primario {
     display: inline-block;
     background-color: var(--color-acentoDorado);
     color: var(--color-fondo);
-    padding: 1.2rem 2.5rem;
+    padding: 1rem 2rem;
     border-radius: var(--radio);
     text-decoration: none;
     font-weight: 600;
     border: none;
     cursor: pointer;
+    text-align: center;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
@@ -105,6 +117,7 @@ body {
     border-radius: var(--radio);
     cursor: pointer;
     font-weight: 600;
+    text-align: center;
     transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
 }
 
@@ -119,8 +132,9 @@ body {
 }
 
 /* ============================= */
-/* Página de inicio */
+/* PÁGINA DE INICIO */
 /* ============================= */
+
 .hero {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -164,11 +178,45 @@ body {
     object-fit: cover;
 }
 
+/* ============================= */
+/* PROBLEMA Y SOLUCIÓN */
+/* ============================= */
+
+.problem-solution {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 3rem 2rem;
+    margin-top: 1rem;
+    background-color: var(--color-superficie);
+}
+
+.problem-solution h2 {
+    grid-column: 1 / -1;
+    font-family: var(--fuente-titulos);
+    text-align: center;
+    font-size: 2rem;
+}
+
+.section-description {
+    grid-column: 1 / -1;
+    color: var(--color-textoSuave);
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.problem-card,
+.solution-card {
+    border-radius: var(--radio);
+    padding: 1.5rem;
+    border: 1px solid transparent;
+}
+
 .problem-card {
     background-color: rgba(226, 75, 74, 0.05);
     border-color: rgba(226, 75, 74, 0.4);
-    border-radius: var(--radio);
-    padding: 1.5rem;
 }
 
 .problem-card h3 {
@@ -176,6 +224,17 @@ body {
     font-family: var(--fuente-titulos);
     font-size: 1.3rem;
     margin-bottom: 1rem;
+}
+
+.problem-card ul,
+.solution-card ul {
+    list-style: none;
+}
+
+.problem-card li,
+.solution-card li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
 }
 
 .problem-card li::before {
@@ -186,8 +245,6 @@ body {
 .solution-card {
     background-color: rgba(76, 175, 125, 0.05);
     border-color: rgba(76, 175, 125, 0.4);
-    border-radius: var(--radio);
-    padding: 1.5rem;
 }
 
 .solution-card h3 {
@@ -202,31 +259,15 @@ body {
     color: #4CAF7D;
 }
 
-.solution-card ul, .problem-card ul{
-    list-style: none;
-}
+/* ============================= */
+/* SERVICIOS DESTACADOS */
+/* ============================= */
 
-.problem-solution {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    padding: 3rem 2rem;
-    margin-top: 1rem;
-    background-color: var(--color-superficie);
-}
-
-.problem-solution h2{
-    grid-column: 1 / -1;
-    font-family: var(--fuente-titulos);
-    text-align: center;
-    font-size: 2rem;
-}
-
-.servicios-destacados{
+.servicios-destacados {
     padding: 3rem 2rem;
 }
 
-.servicios-destacados h2{
+.servicios-destacados h2 {
     font-family: var(--fuente-titulos);
     font-size: 2rem;
     color: var(--color-textoPrincipal);
@@ -236,30 +277,47 @@ body {
     display: inline-block;
 }
 
-.btn-ver-mas{
+.btn-ver-mas {
     text-align: center;
     margin-top: 2rem;
 }
 
-.servicio-card{
+/* ============================= */
+/* TARJETAS DE SERVICIOS */
+/* ============================= */
+
+.servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.servicio-card {
     background-color: var(--color-superficie);
     border: 1px solid var(--color-borde);
     border-radius: var(--radio);
     overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.2s ease;
 }
 
-.servicio-card__image{
+.servicio-card:hover {
+    border-color: var(--color-acentoDorado);
+    transform: translateY(-2px);
+}
+
+.servicio-card__image {
     height: 200px;
     overflow: hidden;
 }
 
-.servicio-card__image img{
+.servicio-card__image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.servicio-card__body{
+.servicio-card__body {
     padding: 1rem;
 }
 
@@ -275,49 +333,79 @@ body {
     margin-bottom: 0.25rem;
 }
 
-.servicio-card__precio{
-    color: var(--color-acentoDorado);
-    font-size: 1.5rem;
-}
-
-.servicio-card__meta{
+.servicio-card__meta {
     color: var(--color-textoSuave);
     font-size: 0.85rem;
     margin: 0.5rem 0;
 }
 
-.servicio-card__footer{
+.servicio-card__footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
     margin-top: 0.75rem;
     padding-top: 0.75rem;
     border-top: 1px solid var(--color-borde);
 }
 
-.estado-disponible{
+.servicio-card__precio {
+    color: var(--color-acentoDorado);
+    font-size: 1.5rem;
+}
+
+/* Estados de servicios */
+.estado-disponible,
+.estado-no-disponible {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.estado-disponible {
     background-color: rgba(76, 175, 125, 0.15);
     color: #4CAF7D;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
 }
 
-.estado-no-disponible{
+.estado-no-disponible {
     background-color: rgba(226, 75, 74, 0.15);
     color: #E24B4A;
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.8rem;
+}
+
+/* Botón para agregar servicio a cita */
+.agregar-cita-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--color-acentoDorado);
+    border-radius: var(--radio);
+    background-color: var(--color-acentoDorado);
+    color: var(--color-fondo);
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.agregar-cita-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(201, 162, 75, 0.35);
+}
+
+.agregar-cita-btn:active {
+    transform: translateY(0);
 }
 
 /* ============================= */
-/* Encabezado interno de páginas */
+/* ENCABEZADO INTERNO DE PÁGINAS */
 /* ============================= */
+
 .page-header {
     background-color: var(--color-superficie);
-    padding: 3rem 2rem;                          
-    margin-bottom: 1rem;                         
+    padding: 3rem 2rem;
+    margin-bottom: 1rem;
 }
 
 .page-header h1 {
@@ -331,10 +419,11 @@ body {
     color: var(--color-textoSuave);
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
+    line-height: 1.6;
 }
 
 /* ============================= */
-/* Página de servicios */
+/* PÁGINA DE SERVICIOS */
 /* ============================= */
 
 .busqueda-section {
@@ -342,6 +431,13 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.busqueda-section label {
+    display: block;
+    color: var(--color-textoPrincipal);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
 .busqueda-section input {
@@ -360,6 +456,7 @@ body {
     border-color: var(--color-acentoDorado);
 }
 
+/* Filtros de servicios */
 .filtros {
     display: flex;
     gap: 1rem;
@@ -383,13 +480,14 @@ body {
     transform: translateY(-2px);
 }
 
-.filtro-btn--activo{
+.filtro-btn--activo {
     background-color: var(--color-acentoDorado);
     color: var(--color-fondo);
     border-color: var(--color-acentoDorado);
     font-weight: 600;
 }
 
+/* Estado vacío de búsqueda */
 #sin-resultados {
     display: none;
     color: var(--color-textoSuave);
@@ -397,6 +495,7 @@ body {
     padding: 1rem;
 }
 
+/* Estadísticas */
 .estadisticas {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -424,13 +523,7 @@ body {
     font-size: 0.85rem;
 }
 
-.servicios-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
-    padding: 1rem;
-}
-
+/* Botón de favoritos */
 .favorito-btn {
     background-color: var(--color-superficie);
     border: 1px solid var(--color-borde);
@@ -456,6 +549,10 @@ body {
     border-color: #E24B4A;
     color: #E24B4A;
 }
+
+/* ============================= */
+/* CATÁLOGO DE PRODUCTOS */
+/* ============================= */
 
 .catalogo-productos {
     padding: 3rem 2rem;
@@ -490,6 +587,12 @@ body {
     border: 1px solid var(--color-borde);
     border-radius: var(--radio);
     overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.2s ease;
+}
+
+.producto-card:hover {
+    border-color: var(--color-acentoDorado);
+    transform: translateY(-2px);
 }
 
 .producto-card__imagen {
@@ -518,6 +621,7 @@ body {
     color: var(--color-textoSuave);
     font-size: 0.85rem;
     margin-bottom: 0.75rem;
+    line-height: 1.5;
 }
 
 .producto-card__precio {
@@ -526,9 +630,8 @@ body {
     font-weight: 600;
 }
 
-
 /* ============================= */
-/* Página de citas */
+/* PÁGINA DE CITAS */
 /* ============================= */
 
 .citas-layout {
@@ -556,6 +659,15 @@ body {
     margin-bottom: 1rem;
 }
 
+.form-seccion-titulo {
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--color-borde);
+    font-family: var(--fuente-titulos);
+    color: var(--color-textoPrincipal);
+}
+
+/* Formulario */
 .form-grupo {
     display: flex;
     flex-direction: column;
@@ -586,6 +698,7 @@ body {
     border-color: var(--color-acentoDorado);
 }
 
+/* Validación visual de campos */
 .form-grupo input.input-error,
 .form-grupo select.input-error,
 .form-grupo textarea.input-error {
@@ -595,18 +708,6 @@ body {
 .form-grupo input.input-success,
 .form-grupo select.input-success,
 .form-grupo textarea.input-success {
-    border-color: #4CAF7D;
-}
-
-.form-grupo input.input-error:focus,
-.form-grupo select.input-error:focus,
-.form-grupo textarea.input-error:focus {
-    border-color: #ff6b6b;
-}
-
-.form-grupo input.input-success:focus,
-.form-grupo select.input-success:focus,
-.form-grupo textarea.input-success:focus {
     border-color: #4CAF7D;
 }
 
@@ -622,6 +723,13 @@ body {
     min-height: 1rem;
 }
 
+.mensaje-formulario {
+    margin-top: 1rem;
+    color: var(--color-acentoDorado);
+    font-weight: 600;
+}
+
+/* Acciones del formulario */
 .acciones-form {
     display: flex;
     gap: 1rem;
@@ -634,178 +742,7 @@ body {
     font-size: 1rem;
 }
 
-.mensaje-formulario {
-    margin-top: 1rem;
-    color: var(--color-acentoDorado);
-    font-weight: 600;
-}
-
-.resumen-item,
-.resumen-total {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    border-bottom: 1px solid var(--color-borde);
-    padding: 0.75rem 0;
-}
-
-.resumen-item span,
-.resumen-total span {
-    color: var(--color-textoSuave);
-}
-
-.resumen-item strong,
-.resumen-total strong {
-    color: var(--color-textoPrincipal);
-    text-align: right;
-}
-
-.resumen-total {
-    margin-top: 1rem;
-    font-size: 1.1rem;
-}
-
-.resumen-total strong {
-    color: var(--color-acentoDorado);
-}
-
-.nota-pago {
-    margin-top: 1rem;
-    color: var(--color-textoSuave);
-    font-size: 0.9rem;
-}
-
-.citas-registradas {
-    margin: 2rem;
-    padding: 1.5rem;
-    border-radius: var(--radio);    /* agregar */
-    border: 1px solid var(--color-borde);  /* agregar */
-}
-
-.texto-ayuda {
-    color: var(--color-textoSuave);
-    margin-bottom: 1rem;
-}
-
-.lista-citas {
-    display: grid;
-    gap: 1rem;
-}
-
-.estado-vacio {
-    color: var(--color-textoSuave);
-    text-align: center;
-    padding: 1rem;
-    border: 1px dashed var(--color-borde);
-    border-radius: var(--radio);
-}
-
-.servicios-cita {
-    display: grid;
-    gap: 0.75rem;
-}
-
-.servicio-opcion:hover {
-    border-color: var(--color-acentoDorado);
-    transform: translateY(-2px);
-}
-
-.servicio-opcion input {
-    cursor: pointer;
-}
-
-.servicio-info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-}
-
-.servicio-info span {
-    color: var(--color-textoPrincipal);
-    font-weight: 600;
-}
-
-.servicio-info small {
-    color: var(--color-textoSuave);
-}
-
-.servicio-opcion {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    background-color: var(--color-fondo);
-    border: 1px solid var(--color-borde);
-    border-radius: var(--radio);
-    padding: 0.75rem;
-    cursor: pointer;
-    color: var(--color-textoPrincipal);
-    transition: border-color 0.3s ease, transform 0.2s ease;
-}
-
-.agregar-cita-btn {
-    width: 100%;
-    margin-top: 1rem;
-    padding: 0.75rem 1rem;
-    border: 1px solid var(--color-acentoDorado);
-    border-radius: var(--radio);
-    background-color: var(--color-acentoDorado);
-    color: #16161A;
-    font-family: var(--fuente-cuerpo);
-    font-size: 0.95rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: transform 0.2s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.agregar-cita-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(201, 162, 75, 0.35);
-}
-
-.agregar-cita-btn:active {
-    transform: translateY(0);
-}
-
-.agregar-cita-btn:disabled {
-    background-color: transparent;
-    color: var(--color-textoSuave);
-    border-color: var(--color-borde);
-    cursor: not-allowed;
-    box-shadow: none;
-    transform: none;
-}
-
-.resumen-servicios-lista {
-    display: grid;
-    gap: 0.5rem;
-    width: 100%;
-}
-
-.resumen-servicio-linea {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    color: var(--color-textoPrincipal);
-    font-size: 0.95rem;
-}
-
-.resumen-servicio-linea span {
-    font-weight: 600;
-}
-
-.resumen-servicio-linea strong {
-    color: var(--color-acentoDorado);
-    white-space: nowrap;
-}
-
-.form-seccion-titulo {
-    margin-top: 2rem;
-    padding-top: 1.25rem;
-    border-top: 1px solid var(--color-borde);
-    font-family: var(--fuente-titulos);
-    color: var(--color-textoPrincipal);
-}
-
+/* Selector de servicios */
 .servicio-selector {
     display: grid;
     grid-template-columns: 1fr auto;
@@ -821,6 +758,11 @@ body {
     font-family: var(--fuente-titulos);
     font-size: 1.2rem;
     margin-bottom: 0.75rem;
+}
+
+.servicios-cita {
+    display: grid;
+    gap: 0.75rem;
 }
 
 .servicio-agregado-item {
@@ -862,11 +804,100 @@ body {
     background-color: rgba(255, 107, 107, 0.1);
 }
 
+/* ============================= */
+/* RESUMEN DE CITA */
+/* ============================= */
+
+.resumen-item,
+.resumen-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--color-borde);
+    padding: 0.75rem 0;
+}
+
+.resumen-item span,
+.resumen-total span {
+    color: var(--color-textoSuave);
+}
+
+.resumen-item strong,
+.resumen-total strong {
+    color: var(--color-textoPrincipal);
+    text-align: right;
+}
+
+.resumen-total {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+}
+
+.resumen-total strong {
+    color: var(--color-acentoDorado);
+}
+
+.resumen-servicios-lista {
+    display: grid;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.resumen-servicio-linea {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--color-textoPrincipal);
+    font-size: 0.95rem;
+}
+
+.resumen-servicio-linea span {
+    font-weight: 600;
+}
+
+.resumen-servicio-linea strong {
+    color: var(--color-acentoDorado);
+    white-space: nowrap;
+}
+
+.nota-pago {
+    margin-top: 1rem;
+    color: var(--color-textoSuave);
+    font-size: 0.9rem;
+}
+
+/* ============================= */
+/* CITAS REGISTRADAS */
+/* ============================= */
+
+.citas-registradas {
+    margin: 2rem;
+}
+
+.texto-ayuda {
+    color: var(--color-textoSuave);
+    margin-bottom: 1rem;
+}
+
+.lista-citas {
+    display: grid;
+    gap: 1rem;
+}
+
+.estado-vacio {
+    color: var(--color-textoSuave);
+    text-align: center;
+    padding: 1rem;
+    border: 1px dashed var(--color-borde);
+    border-radius: var(--radio);
+}
+
+/* Tarjeta de cita */
 .cita-card {
     background-color: var(--color-fondo);
     border: 1px solid var(--color-borde);
     border-radius: var(--radio);
-    padding: 0.65rem 1rem;
+    padding: 0.75rem 1rem;
     cursor: pointer;
     transition: border-color 0.3s ease, transform 0.2s ease;
 }
@@ -893,6 +924,13 @@ body {
 .cita-card__encabezado p {
     color: var(--color-textoSuave);
     font-size: 0.85rem;
+}
+
+.cita-card__resumen {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.4rem;
 }
 
 .cita-card__detalle {
@@ -928,31 +966,9 @@ body {
     padding-top: 0.5rem !important;
 }
 
-/* El botón y el select de estado ocupan toda la fila */
-.cita-estado-control,
-.btn-eliminar-cita {
-    grid-column: 1 / -1;
-}
-
-.btn-eliminar-cita {
-    margin-top: 0.55rem;
-    width: fit-content;
-    padding: 0.45rem 0.85rem;
-    border: 1px solid rgba(255, 107, 107, 0.5);
-    border-radius: var(--radio);
-    background-color: transparent;
-    color: #ff6b6b;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.btn-eliminar-cita:hover {
-    background-color: rgba(255, 107, 107, 0.1);
-    transform: translateY(-2px);
-}
-
+/* Control de estado de cita */
 .cita-estado-control {
+    grid-column: 1 / -1;
     display: grid;
     gap: 0.3rem;
     margin-top: 0.4rem;
@@ -973,29 +989,32 @@ body {
     font-family: var(--fuente-cuerpo);
 }
 
-
 .select-estado-cita:focus {
     outline: none;
     border-color: var(--color-acentoDorado);
 }
 
-.cita-card__resumen {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.4rem;
+/* Botón eliminar cita */
+.btn-eliminar-cita {
+    grid-column: 1 / -1;
+    margin-top: 0.55rem;
+    width: fit-content;
+    padding: 0.45rem 0.85rem;
+    border: 1px solid rgba(255, 107, 107, 0.5);
+    border-radius: var(--radio);
+    background-color: transparent;
+    color: #ff6b6b;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.cita-card__encabezado {
-    flex-direction: column;
-    align-items: flex-start;
+.btn-eliminar-cita:hover {
+    background-color: rgba(255, 107, 107, 0.1);
+    transform: translateY(-2px);
 }
 
-.cita-card__encabezado strong {
-    align-self: flex-start;
-}
-
-
+/* Estados de cita */
 .estado-cita {
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
@@ -1020,7 +1039,7 @@ body {
 }
 
 /* ============================= */
-/* Footer */
+/* FOOTER */
 /* ============================= */
 
 .footer {
@@ -1092,28 +1111,13 @@ body {
     color: var(--color-textoSuave);
 }
 
-.footer {
-    padding: 1.5rem 1rem;
-}
-
-.footer__contenido {
-    grid-template-columns: 1fr;
-    text-align: center;
-}
-
-.footer__contacto {
-    align-items: center;
-}
-
-.footer__nav {
-    justify-content: center;
-}
-
-
 /* ============================= */
-/* Responsive */
+/* RESPONSIVE */
 /* ============================= */
+
 @media (max-width: 768px) {
+
+    /* Header */
     .header {
         flex-direction: column;
         align-items: flex-start;
@@ -1125,6 +1129,7 @@ body {
         flex-wrap: wrap;
     }
 
+    /* Inicio */
     .hero {
         grid-template-columns: 1fr;
         min-height: auto;
@@ -1149,6 +1154,7 @@ body {
         padding: 2rem 1rem;
     }
 
+    /* Encabezados internos */
     .page-header {
         padding: 1.5rem 1rem;
     }
@@ -1157,6 +1163,7 @@ body {
         font-size: 2rem;
     }
 
+    /* Servicios */
     .estadisticas {
         grid-template-columns: 1fr;
     }
@@ -1165,9 +1172,22 @@ body {
         flex-wrap: wrap;
     }
 
+    .filtro-btn {
+        width: 100%;
+    }
+
+    /* Citas */
     .citas-layout {
         grid-template-columns: 1fr;
         padding: 1rem;
+    }
+
+    .form-cita .campos-dobles {
+        grid-template-columns: 1fr;
+    }
+
+    .servicio-selector {
+        grid-template-columns: 1fr;
     }
 
     .citas-registradas {
@@ -1194,9 +1214,81 @@ body {
         text-align: left;
     }
 
-    .servicio-selector {
-    grid-template-columns: 1fr;
+    .servicio-agregado-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .btn-quitar-servicio {
+        width: 100%;
+    }
+
+    .cita-card__encabezado {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .cita-card__resumen {
+        align-items: flex-start;
+    }
+
+    .cita-card--abierta .cita-card__detalle {
+        grid-template-columns: 1fr;
+    }
+
+    .cita-estado-control {
+        max-width: 100%;
+    }
+
+    .btn-eliminar-cita {
+        width: 100%;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 1.5rem 1rem;
+    }
+
+    .footer__contenido {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer__contacto {
+        align-items: center;
+    }
+
+    .footer__nav {
+        justify-content: center;
+    }
 }
 
-}
+/* ============================= */
+/* RESPONSIVE para panatalla mas pequeña */
+/* ============================= */
 
+@media (max-width: 480px) {
+
+    .navbar__logo {
+        font-size: 1.5rem;
+    }
+
+    .navbar__link {
+        font-size: 1rem;
+    }
+
+    .servicios-grid,
+    .productos-grid {
+        grid-template-columns: 1fr;
+        padding: 0.75rem;
+    }
+
+    .servicio-card__footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .page-header p {
+        font-size: 1rem;
+    }
+}
